@@ -27,3 +27,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Vuetify Documentation
+https://vuetifyjs.com/en/getting-started/quick-start
