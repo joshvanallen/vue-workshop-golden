@@ -30,11 +30,16 @@
       <v-app-bar-nav-icon
         @click.stop="primaryDrawerState = !primaryDrawerState"
       ></v-app-bar-nav-icon>
+      <v-toolbar-title>{{
+        $route.meta && $route.meta.title ? $route.meta.title : $route.name
+      }}</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
       <v-container grid-list-xl fluid>
-        <h1>Hello World!</h1>
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
       </v-container>
     </v-content>
 
@@ -50,7 +55,12 @@
 export default {
   data: () => ({
     primaryDrawerState: true,
-    navItems: []
+    navItems: [
+      { icon: "home", text: "Home", routeName: "home" },
+      { icon: "contacts", text: "Friends", routeName: "friends" },
+      { divider: true },
+      { icon: "info", text: "About", routeName: "about" }
+    ]
   })
 };
 </script>
