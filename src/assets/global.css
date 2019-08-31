@@ -1,0 +1,87 @@
+.ball {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -200px 0 0 -200px;
+  border-radius: 50%;
+
+  background: -webkit-radial-gradient(
+    65% 15%,
+    circle,
+    white 1px,
+    aqua 3%,
+    darkblue 60%,
+    balac 100%
+  );
+  background: -moz-radial-gradient(
+    65% 15%,
+    circle,
+    white 1px,
+    aqua 3%,
+    darkblue 60%,
+    aqua 100%
+  );
+  background: -o-radial-gradient(
+    70% 15%,
+    circle,
+    #424242 0px,
+    #424040 3%,
+    black 60%,
+    #b7a9a9 100%
+  );
+  background: radial-gradient(
+    circle at 70% 15%,
+    #424242 0px,
+    #424040 3%,
+    black 60%,
+    #b7a9a9 100%
+  );
+}
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.component-fade-enter,
+.component-fade-leave-to {
+  opacity: 0;
+}
+
+.answer-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  margin: -200px 0 0 -200px;
+  border-radius: 50%;
+  width: 60%;
+  height: 60%;
+  background: #1a529a;
+  left: 70%;
+  font-family: Helvetica;
+  top: 70%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.57);
+  line-height: 1.25;
+  font-size: 23px;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 50px #000000;
+}
+
+.cover-slot {
+  position: absolute;
+  margin: -200px 0 0 -200px;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  background: white;
+  left: 75%;
+  font-family: Helvetica;
+  top: 75%;
+  text-align: center;
+  color: black;
+  line-height: 1.35;
+  font-size: 150px;
+}
