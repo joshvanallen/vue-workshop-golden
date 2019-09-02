@@ -1,8 +1,8 @@
 <template>
   <v-app id="sandbox">
     <v-navigation-drawer app v-model="primaryDrawerState" overflow width="300">
-      <div class="pa-4 text-sm-center teal white--text">
-        <div class="display-2 py-6">Friends HQ</div>
+      <div class="pa-4 text-sm-center teal white--text app-drawer-header">
+        <div class="display-2 py-6 app-drawer-header-name">Friends HQ</div>
         <p>Together, we are stronger</p>
       </div>
       <v-spacer></v-spacer>

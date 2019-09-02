@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FriendDetailsTitle.vue renders full name when passed prop.friend 1`] = `"John Doe"`;
