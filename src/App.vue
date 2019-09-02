@@ -9,12 +9,7 @@
       <v-list dense>
         <template v-for="(item, i) in navItems">
           <v-divider dark v-if="item.divider" class="my-3" :key="i"></v-divider>
-          <v-list-item
-            :key="i"
-            v-else
-            :to="{ name: item.routeName }"
-            :id="item.text.toLowerCase()"
-          >
+          <v-list-item :key="i" v-else :to="{ name: item.routeName }" :id="item.text.toLowerCase()">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -27,12 +22,12 @@
     </v-navigation-drawer>
 
     <v-app-bar app>
-      <v-app-bar-nav-icon
-        @click.stop="primaryDrawerState = !primaryDrawerState"
-      ></v-app-bar-nav-icon>
-      <v-toolbar-title>{{
+      <v-app-bar-nav-icon @click.stop="primaryDrawerState = !primaryDrawerState"></v-app-bar-nav-icon>
+      <v-toolbar-title>
+        {{
         $route.meta && $route.meta.title ? $route.meta.title : $route.name
-      }}</v-toolbar-title>
+        }}
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -44,9 +39,7 @@
     </v-content>
 
     <v-footer app inset>
-      <span class="px-3"
-        >&copy; Looselytyped {{ new Date().getFullYear() }}</span
-      >
+      <span class="px-3">&copy; Looselytyped {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>

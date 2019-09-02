@@ -6,10 +6,8 @@
           <template v-slot:icon>
             <v-icon color="indigo" size="56px">contacts</v-icon>
           </template>
-          <template v-slot:headline
-            >Friends</template
-          >
-          <template v-slot:count>{{ friends.length }}</template>
+          <template v-slot:headline>Friends</template>
+          <template v-slot:count>{{ friendsCount }}</template>
         </home-card>
       </router-link>
     </v-flex>
@@ -19,10 +17,8 @@
           <template v-slot:icon>
             <v-icon color="red" size="56px">favorite</v-icon>
           </template>
-          <template v-slot:headline
-            >Favorites</template
-          >
-          <template v-slot:count>{{ favCount }}</template>
+          <template v-slot:headline>Favorites</template>
+          <template v-slot:count>{{ favFriendsCount }}</template>
         </home-card>
       </router-link>
     </v-flex>
@@ -30,27 +26,20 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
+
 import HomeCard from "@/components/HomeCard";
-const friends = [];
+import { FETCH_FRIENDS } from "@/store/actions.type";
+
 export default {
   components: {
     HomeCard
   },
-  data: () => {
-    return {
-      friends
-    };
-  },
   computed: {
-    favCount() {
-      return this.friends ? this.friends.filter(f => f.fav).length : 0;
-    }
+    ...mapGetters(["friendsCount", "favFriendsCount"])
   },
   mounted() {
-    axios.get("http://localhost:3000/friends").then(response => {
-      this.friends = response.data;
-    });
+    this.$store.dispatch(FETCH_FRIENDS);
   }
 };
 </script>

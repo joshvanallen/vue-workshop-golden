@@ -38,10 +38,7 @@ export default new Router({
               meta: {
                 title: "Friend Notes"
               },
-              components: {
-                default: () => import("@/components/FriendDetails"),
-                notes: () => import("@/components/FriendNotes")
-              }
+              component: () => import("@/views/FriendNotesList")
             },
             {
               path: "edit",

@@ -52,14 +52,13 @@ export default {
     originalNote: null,
     contentRules: [v => !!v || "Content is required"]
   }),
-  props: ["note"],
   methods: {
     emitNote(note) {
       if (this.valid) {
         if (this.originalNote) {
-          this.$emit("note", Object.assign({}, this.originalNote, note));
+          this.$emit("save", Object.assign({}, this.originalNote, note));
         } else {
-          this.$emit("note", note);
+          this.$emit("save", note);
         }
         this.emitClose();
       }
