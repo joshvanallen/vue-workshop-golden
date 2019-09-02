@@ -1,4 +1,4 @@
-# vue-workshop-brokeup
+# vue-workshop
 
 ## Project setup
 ```
@@ -25,9 +25,15 @@ npm run test
 npm run lint
 ```
 
+### Run your end-to-end tests
+```
+npm run test:e2e
+```
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-### Vuetify Documentation
-https://vuetifyjs.com/en/getting-started/quick-start
