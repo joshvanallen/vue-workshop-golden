@@ -4,6 +4,7 @@
       v-for="(friend, index) in friends"
       :key="friend.id"
       :friend="friend"
+      :emitEditableEvents="emitEditableEvents"
       :isLast="index + 1 === friends.length"
       @show-details="navigateToDetails"
       @edit-friend="navigateToEdit"
@@ -22,6 +23,10 @@ export default {
   props: {
     friends: {
       default: () => []
+    },
+    emitEditableEvents:{
+      type: Boolean,
+      default: true
     }
   },
   methods: {

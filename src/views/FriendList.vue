@@ -8,9 +8,10 @@
           @fav="patchFav"
           @show-details="showDetails"
           :friends="filteredFriends"
+          :emitEditableEvents="online"
         ></friend-list>
       </v-card>
-      <v-btn id="add-friend" :to="{ name: 'addFriend' }" pa-1 color="primary" block large>Add Friend</v-btn>
+      <v-btn id="add-friend" v-if="online" :to="{ name: 'addFriend' }" pa-1 color="primary" block large>Add Friend</v-btn>
     </v-col>
   </div>
 </template>
@@ -58,7 +59,7 @@ export default {
     initFavStatus() {
       return getFavQueryParam(this.$route);
     },
-    ...mapGetters(["filteredFriends"])
+    ...mapGetters(["filteredFriends", "online"])
   }
 };
 </script>

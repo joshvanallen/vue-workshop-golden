@@ -2,6 +2,7 @@ export const FETCH_FRIENDS = "fetchFriends";
 export const FETCH_FRIEND = "fetchFriend";
 export const FETCH_NOTES = "fetchNotes";
 export const FETCH_NOTE = "fetchNote";
+export const FETCH_HOME_STATE = "fetchHomeState";
 export const ADD_FRIEND = "addFriend";
 export const ADD_NOTE = "addNote";
 export const ADD_FAVORITE = "addFavorite";

@@ -1,4 +1,5 @@
 export const SET_FRIEND = "setFriend";
+export const SET_CONNECTION_STATUS = "setConnectionStatus";
 export const SET_NOTE = "setNote";
 export const SET_NOTES = "setNotes";
 export const SET_FRIENDS = "setFriends";

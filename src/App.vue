@@ -32,6 +32,14 @@
 
     <v-content>
       <v-container grid-list-xl fluid>
+        <v-alert
+          color="blue-grey"
+          dark
+          dense
+          icon="signal_wifi_off"
+          prominent
+          v-if="offline"
+        >You are offline. Some features may be disabled.</v-alert>
         <transition name="fade" mode="out-in">
           <router-view />
         </transition>
@@ -39,12 +47,13 @@
     </v-content>
 
     <v-footer app inset>
-      <span class="px-3">&copy; Looselytyped {{ new Date().getFullYear() }}</span>
+      <span class="px-3">&copy; Looselytyped & Michael Carducci {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 export default {
   data: () => ({
     primaryDrawerState: true,
@@ -54,6 +63,9 @@ export default {
       { divider: true },
       { icon: "info", text: "About", routeName: "about" }
     ]
-  })
+  }),
+  computed:{
+    ...mapGetters(["offline"])
+  }
 };
 </script>

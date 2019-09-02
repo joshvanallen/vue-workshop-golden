@@ -5,15 +5,10 @@
         <v-list-item-title v-text="fullName"></v-list-item-title>
       </v-list-item-content>
       <v-list-item-action>
-        <v-btn @click.stop="showEdit(friend)" text icon>
+        <v-btn v-if="emitEvents" @click.stop="showEdit(friend)" text icon>
           <v-icon>edit</v-icon>
         </v-btn>
-        <v-btn
-          @click.stop="notifyFavorite(friend)"
-          text
-          icon
-          :color="friend.fav ? 'red' : 'grey'"
-        >
+        <v-btn @click.stop="notifyFavorite(friend)" text icon :color="friend.fav ? 'red' : 'grey'">
           <v-icon>favorite</v-icon>
         </v-btn>
       </v-list-item-action>
@@ -24,16 +19,16 @@
 
 <script>
 export default {
-  props: ["friend", "isLast"],
+  props: ["friend", "emitEvents", "isLast"],
   methods: {
     notifyFavorite(friend) {
-      this.$emit("favorite", friend);
+      if (this.emitEvents) this.$emit("favorite", friend);
     },
     showEdit(friend) {
       this.$emit("edit-friend", friend);
     },
     showDetails(friend) {
-      this.$emit("show-details", friend);
+      if (this.emitEvents) this.$emit("show-details", friend);
     }
   },
   computed: {

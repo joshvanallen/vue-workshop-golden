@@ -1,9 +1,10 @@
-import 'babel-polyfill';
+import "babel-polyfill";
 import Vue from "vue";
 import router from "./router";
 import App from "./App.vue";
-import vuetify from './plugins/vuetify';
-import store from './store';
+import vuetify from "./plugins/vuetify";
+import store from "./store";
+import "./registerServiceWorker";
 
 Vue.config.productionTip = false;
 

@@ -1,4 +1,4 @@
-import { FETCH_FRIENDS, ADD_FAVORITE, REMOVE_FAVORITE } from "./actions.type";
+import { FETCH_FRIENDS, ADD_FAVORITE, REMOVE_FAVORITE, FETCH_HOME_STATE } from "./actions.type";
 import {
   SET_FRIENDS,
   FILTER_FRIENDS,
@@ -6,6 +6,8 @@ import {
 } from "./mutations.type";
 import FriendService from "@/api/friend.service";
 import { checkFriendValues } from "@/shared/helper-functions";
+import store from ".";
+import { recoverState } from "../storage/recover";
 
 const initialState = {
   filteredFriends: [],
@@ -18,8 +20,12 @@ export const state = { ...initialState };
 
 export const actions = {
   async [FETCH_FRIENDS](context) {
-    const { data } = await FriendService.getAll();
-    context.commit(SET_FRIENDS, data);
+    if(context.rootState.connection.online){
+      const { data } = await FriendService.getAll();
+      context.commit(SET_FRIENDS, data);
+    }else{
+      store.dispatch(FETCH_HOME_STATE);
+    }
   },
   async [ADD_FAVORITE](context, id) {
     await FriendService.patchFavorite(id, true);
@@ -28,6 +34,10 @@ export const actions = {
   async [REMOVE_FAVORITE](context, id) {
     await FriendService.patchFavorite(id, false);
     context.commit(UPDATE_FAVORITE_IN_LIST, { id, fav: false });
+  },
+  async [FETCH_HOME_STATE](context) {
+    const data = await recoverState('home');
+    context.commit(SET_FRIENDS, data.friends || []);
   }
 };
 
