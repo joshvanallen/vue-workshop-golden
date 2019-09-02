@@ -1,0 +1,11 @@
+export const SET_FRIEND = "setFriend";
+export const SET_NOTE = "setNote";
+export const SET_NOTES = "setNotes";
+export const SET_FRIENDS = "setFriends";
+export const FILTER_FRIENDS = "filterFriends";
+export const UPDATE_FAVORITE_IN_LIST = "updateFavoriteInList";
+export const ADD_NOTE_TO_LIST = "addNoteToList";
+export const UPDATE_NOTE_IN_LIST = "updateNoteInList";
+export const REMOVE_NOTE_IN_LIST = "removeNoteInList";
+export const RESET_FRIEND_FORM = "resetFriendForm";
+export const DEFAULT_FRIEND_FORM = "defaultFriendForm";

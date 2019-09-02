@@ -1,7 +1,7 @@
 <template>
   <v-form ref="form" v-model="valid" id="add-friend-form">
     <v-text-field
-      v-model="friendData.firstName"
+      v-model="friend.firstName"
       :rules="nameRules"
       label="First name"
       id="firstName"
@@ -9,7 +9,7 @@
     ></v-text-field>
 
     <v-text-field
-      v-model="friendData.lastName"
+      v-model="friend.lastName"
       :rules="nameRules"
       label="Last name"
       id="lastName"
@@ -17,13 +17,13 @@
     ></v-text-field>
 
     <v-checkbox
-      v-model="friendData.fav"
+      v-model="friend.fav"
       label="Fav?"
       id="fav"
       required
     ></v-checkbox>
 
-    <v-radio-group v-model="friendData.gender" id="gender" row>
+    <v-radio-group v-model="friend.gender" id="gender" row>
       <v-radio label="Male" :value="genders.male"></v-radio>
       <v-radio label="Female" :value="genders.female"></v-radio>
       <v-radio label="Undisclosed" :value="genders.undisclosed"></v-radio>
@@ -47,12 +47,6 @@ export default {
   data() {
     return {
       valid: true,
-      friendData: {
-        firstName: "",
-        lastName: "",
-        fav: false,
-        gender: null
-      },
       genders: {
         male: "male",
         female: "female",
@@ -64,26 +58,10 @@ export default {
   props: ["enabled", "friend"],
   methods: {
     reset() {
-      this.$set(this.friendData, "firstName", this.friend.firstName);
-      this.$set(this.friendData, "lastName", this.friend.lastName);
-      this.$set(this.friendData, "fav", this.friend.fav);
-      this.$set(this.friendData, "gender", this.friend.gender);
       this.$emit("reset");
     },
     submit() {
-      const friend = {
-        firstName: this.friendData.firstName,
-        lastName: this.friendData.lastName,
-        gender: this.friendData.gender,
-        fav: this.friendData.fav
-      };
-
-      this.$emit("submit", friend);
-    }
-  },
-  mounted() {
-    if (this.friend) {
-      this.reset();
+      this.$emit("submit");
     }
   }
 };

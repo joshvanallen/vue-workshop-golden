@@ -8,7 +8,9 @@ export default {
   props: ["friend"],
   computed: {
     fullName() {
-      return `${this.friend.firstName} ${this.friend.lastName}`;
+      return this.friend
+        ? `${this.friend.firstName} ${this.friend.lastName}`
+        : "";
     }
   }
 };

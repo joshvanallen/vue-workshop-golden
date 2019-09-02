@@ -24,16 +24,6 @@
 </template>
 <script>
 export default {
-  // data(){
-  //     return {
-  //         note: {
-  //             id: 1,
-  //             title: null,
-  //             content: 'This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! This is an awesome note! '
-  //         },
-  //         isLast:true
-  //     }
-  // },
   props: ["note", "isLast"],
   methods: {
     editNote(note) {

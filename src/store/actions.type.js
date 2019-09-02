@@ -1,0 +1,12 @@
+export const FETCH_FRIENDS = "fetchFriends";
+export const FETCH_FRIEND = "fetchFriend";
+export const FETCH_NOTES = "fetchNotes";
+export const FETCH_NOTE = "fetchNote";
+export const ADD_FRIEND = "addFriend";
+export const ADD_NOTE = "addNote";
+export const ADD_FAVORITE = "addFavorite";
+export const UPDATE_FRIEND = "updateFriend";
+export const UPDATE_NOTE = "updateNote";
+export const REMOVE_FRIEND = "updateFriend";
+export const REMOVE_NOTE = "removeNote";
+export const REMOVE_FAVORITE = "removeFavorite";

@@ -28,7 +28,7 @@ export default {
       const trimmedValue = trimSearchInput(event);
       searchCriteria = generateSearchCriteria(
         trimmedValue,
-        searchCriteria.favs
+        searchCriteria.favoriteStatus
       );
       this.$emit("search", searchCriteria);
     },
@@ -37,7 +37,7 @@ export default {
       this.$emit("search", searchCriteria);
     },
     onCleared() {
-      searchCriteria = generateSearchCriteria(null, searchCriteria.favs);
+      searchCriteria = generateSearchCriteria(null, searchCriteria.favoriteStatus);
       this.$emit("search", searchCriteria);
     }
   },
@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    searchCriteria.favs = this.favs;
+    this.favoriteFilter(this.defaultFavs);
   },
   props: {
     placeholder: {

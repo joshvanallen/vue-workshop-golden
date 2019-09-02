@@ -1,10 +1,7 @@
 <template>
   <div class="friend">
     <v-col md="8" offset-md="2">
-      <search-bar
-        :onlyFavs="initFavsFilter"
-        @search="filterFriends"
-      ></search-bar>
+      <search-bar :onlyFavs="initFavStatus" @search="filterFriends"></search-bar>
       <v-card>
         <friend-list
           @edit-friend="editFriend"
@@ -13,71 +10,55 @@
           :friends="filteredFriends"
         ></friend-list>
       </v-card>
-      <v-btn
-        id="add-friend"
-        :to="{ name: 'addFriend' }"
-        pa-1
-        color="primary"
-        block
-        large
-        >Add Friend</v-btn
-      >
+      <v-btn id="add-friend" :to="{ name: 'addFriend' }" pa-1 color="primary" block large>Add Friend</v-btn>
     </v-col>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
+
+import store from "@/store";
 import SearchBar from "@/components/SearchBar";
 import FriendList from "@/components/FriendList";
-import { checkFriendValues, getFavQueryParam } from "@/shared/helper-functions";
+import {
+  FETCH_FRIENDS,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE
+} from "@/store/actions.type";
+import { FILTER_FRIENDS } from "@/store/mutations.type";
+import { getFavQueryParam } from "@/shared/helper-functions";
 
 export default {
   components: {
     SearchBar,
     FriendList
   },
-  data: () => {
-    return {
-      filteredFriends: [],
-      friends: []
-    };
+  beforeRouteEnter(to, from, next) {
+    store.dispatch(FETCH_FRIENDS).then(() => {
+      next();
+    });
   },
   methods: {
     filterFriends(value) {
-      this.filteredFriends = this.friends.filter(friend =>
-        checkFriendValues(friend, value)
-      );
+      this.$store.commit(FILTER_FRIENDS, value);
     },
     editFriend(friend) {
       this.$router.push({ path: `details/${friend.id}/edit` });
     },
     patchFav(friend) {
-      axios
-        .patch(`http://localhost:3000/friends/${friend.id}`, {
-          fav: !friend.fav
-        })
-        .then(() => {
-          this.$set(friend, "fav", !friend.fav);
-        });
+      const action = friend.fav ? REMOVE_FAVORITE : ADD_FAVORITE;
+      this.$store.dispatch(action, friend.id);
     },
     showDetails(friend) {
       this.$router.push({ name: "friendDetails", params: { id: friend.id } });
     }
   },
   computed: {
-    initFavsFilter() {
+    initFavStatus() {
       return getFavQueryParam(this.$route);
-    }
-  },
-  mounted() {
-    axios.get("http://localhost:3000/friends").then(response => {
-      this.filteredFriends = this.friends = response.data;
-      this.filterFriends({
-        text: null,
-        favs: this.initFavsFilter
-      });
-    });
+    },
+    ...mapGetters(["filteredFriends"])
   }
 };
 </script>
