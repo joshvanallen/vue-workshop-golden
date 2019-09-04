@@ -1,4 +1,4 @@
-# vue-workshop-brokeup
+# vue-workshop
 
 ## Project setup
 ```
